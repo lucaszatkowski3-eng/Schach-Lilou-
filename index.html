@@ -14,10 +14,16 @@
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#" aria-label="Lilous Schachwelt Startseite">
-        <span class="brand-mark">L</span><span>LILOUS <b>SCHACHWELT</b></span>
+        <span class="brand-mark">🦉</span><span>Lumi <b>Schach</b></span>
       </a>
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <button class="nav-item active" data-view="home">Start</button>
+        <button class="nav-item" data-view="play">Spielen</button>
+        <button class="nav-item" data-view="learn">Figuren</button>
+        <button class="nav-item" data-view="wardrobe">Shop</button>
+      </nav>
       <div class="top-stats">
-        <div class="stat-chip"><span class="coin-icon"></span><strong id="coin-count">0</strong><span>Sterne</span></div>
+        <div class="stat-chip"><span class="star-mark">★</span><strong id="coin-count">0</strong></div>
         <button class="sound-button" id="sound-toggle" aria-label="Ton ein oder ausschalten">♫</button>
       </div>
     </header>
@@ -25,29 +31,25 @@
     <main>
       <section class="welcome-panel" id="home-view">
         <div class="welcome-copy">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> DEIN KLEINES SCHACH-ABENTEUER</div>
-          <h1>Hallo, <span>Lilou!</span></h1>
-          <p class="welcome-text">Lerne Schach, spiele spannende Partien und sammle Sterne für deinen Charakter.</p>
+          <div class="eyebrow">SCHACH LERNEN MIT SPASS</div>
+          <h1>Spiel Schach<br><span>mit Lumi</span></h1>
+          <p class="welcome-text">Lumi ist deine Schach-Freundin. Sie hilft dir bei jedem Zug, erklärt dir die Figuren und freut sich mit dir über jeden kleinen Erfolg.</p>
           <div class="welcome-actions">
-            <button class="primary-button" data-view="play">Schach spielen <span>→</span></button>
-            <button class="soft-button" data-view="learn">Schach lernen</button>
+            <button class="primary-button" data-view="play">Jetzt spielen <span>→</span></button>
+            <button class="soft-button" data-view="wardrobe">Lumi einkleiden</button>
           </div>
-          <div class="mini-note"><span class="sparkle">✦</span> Jeder Zug macht dich ein Stück besser.</div>
+          <div class="mini-note">Kein Konto nötig – dein Fortschritt bleibt auf diesem Gerät.</div>
         </div>
         <div class="hero-art">
-          <div class="sun-disc"></div><div class="hero-cloud cloud-one"></div><div class="hero-cloud cloud-two"></div>
-          <div class="pixel-character hero-character" aria-label="Pixel-Figur"></div>
-          <div class="floating-tile tile-one">♘</div><div class="floating-tile tile-two">★</div>
-          <div class="hero-ground"></div>
+          <div class="owl-card">
+            <div class="speech-bubble">Hallo! Ich bin Lumi. Wollen wir zusammen Schach spielen?</div>
+            <span class="floating-chess knight">♞</span><span class="floating-chess queen">♕</span>
+            <div class="pixel-character hero-character" aria-label="Lumi, die Eule"></div>
+            <div class="owl-shadow"></div>
+            <div class="hero-points"><span>☆ <b id="hero-score">0 Punkte</b></span><span>Lumi spielt Stufe 1</span></div>
+          </div>
         </div>
       </section>
-
-      <nav class="main-nav" aria-label="Hauptmenü">
-        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span> Start</button>
-        <button class="nav-item" data-view="play"><span class="nav-icon">▦</span> Spielen</button>
-        <button class="nav-item" data-view="learn"><span class="nav-icon">✎</span> Lernen</button>
-        <button class="nav-item" data-view="wardrobe"><span class="nav-icon">♙</span> Mein Charakter</button>
-      </nav>
 
       <section class="content-view hidden" id="play-view">
         <div class="section-heading"><div><div class="eyebrow">ZEIT FÜR EIN SPIEL</div><h2>Schach spielen</h2><p>Spiele gegen den Computer. Du bist Weiß und beginnst!</p></div><button class="text-button" data-view="home">← Zurück</button></div>
@@ -82,10 +84,10 @@
       </section>
 
       <section class="content-view hidden" id="wardrobe-view">
-        <div class="section-heading"><div><div class="eyebrow">DEIN PIXEL-FREUND</div><h2>Mein Charakter</h2><p>Spiele Schach und sammle Sterne für neue Sachen.</p></div><button class="text-button" data-view="home">← Zurück</button></div>
+        <div class="section-heading"><div><div class="eyebrow">DEINE SAMMLUNG</div><h2>Lumis Shop</h2><p>Alles hier bezahlst du mit Punkten, die du beim Schachspielen sammelst – nie mit echtem Geld.</p></div><button class="text-button" data-view="home">← Zurück</button></div>
         <div class="wardrobe-layout">
-          <div class="character-stage"><div class="stage-sun"></div><div class="pixel-character wardrobe-character" id="wardrobe-character"></div><div class="stage-name">DEIN ABENTEUER-FREUND</div></div>
-          <div class="shop-panel"><div class="shop-heading"><div><h3>Kleiner Sterneladen</h3><p>Such dir etwas Schönes aus!</p></div><div class="shop-balance"><span class="coin-icon"></span><b id="shop-coins">0</b></div></div><div class="shop-grid" id="shop-grid"></div></div>
+          <div class="character-stage"><div class="stage-sun"></div><div class="pixel-character wardrobe-character" id="wardrobe-character"></div><div class="stage-name">SO SIEHT LUMI GERADE AUS</div></div>
+          <div class="shop-panel"><div class="shop-heading"><div><h3>Für Lumi</h3><p>Pro Platz kann Lumi ein Teil tragen. Tippe zum Wechseln einfach auf „Anziehen“.</p></div><div class="shop-balance"><span class="coin-icon"></span><b id="shop-coins">0</b></div></div><div class="shop-grid" id="shop-grid"></div></div>
         </div>
       </section>
     </main>
