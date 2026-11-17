@@ -53,11 +53,39 @@ function onSquare(sq){
   if(game.isGameOver()||game.turn()!=="w")return;
   const p=game.get(sq);
   if(selected&&legalTargets.includes(sq)){
-    try{game.move({from:selected,to:sq,promotion:"q"});selected=null;legalTargets=[];renderBoard();if(game.isGameOver()){finishGame();return;}setTimeout(robotMove,420);}catch(e){selected=null;legalTargets=[];renderBoard();}
+    try{moveAnimated(selected,sq,"q");selected=null;legalTargets=[];if(game.isGameOver()){finishGame();return;}setTimeout(robotMove,520);}catch(e){selected=null;legalTargets=[];renderBoard();}
     return;
   }
   if(p&&p.color==="w"){selected=sq;legalTargets=game.moves({square:sq,verbose:true}).map(m=>m.to);$("coach-message").textContent=legalTargets.length?"Toll! Die leuchtenden Felder zeigen dir, wohin diese Figur ziehen darf.":"Diese Figur kann gerade nicht ziehen.";renderBoard();}
   else{selected=null;legalTargets=[];renderBoard();}
+}
+function animatePiece(from,to){
+  const destination=document.querySelector(`.square[aria-label="${to}"] .piece`);
+  if(!destination)return;
+  const fromEl=document.querySelector(`.square[aria-label="${from}"]`);
+  const toEl=document.querySelector(`.square[aria-label="${to}"]`);
+  if(!fromEl||!toEl)return;
+  const a=fromEl.getBoundingClientRect(),b=toEl.getBoundingClientRect();
+  const dx=a.left-b.left,dy=a.top-b.top;
+  if(Math.abs(dx)+Math.abs(dy)<1)return;
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce)return;
+  destination.animate([
+    {transform:`translate(${dx}px,${dy}px) scale(1.08)`,filter:"drop-shadow(0 5px 4px #243b2a55)"},
+    {transform:"translate(0,0) scale(1)",filter:"drop-shadow(1px 2px 0 #4b514533)"}
+  ],{duration:430,easing:"cubic-bezier(.2,.8,.2,1)",fill:"both"});
+}
+function moveAnimated(from,to,promotion="q"){
+  const moving=game.get(from);
+  const isCastle=moving?.type==="k"&&Math.abs(from.charCodeAt(0)-to.charCodeAt(0))===2;
+  const rookFrom=isCastle?(to.charCodeAt(0)>from.charCodeAt(0)?(game.turn()==="w"?"h1":"h8"):(game.turn()==="w"?"a1":"a8")):null;
+  const rookTo=isCastle?(to.charCodeAt(0)>from.charCodeAt(0)?(game.turn()==="w"?"f1":"f8"):(game.turn()==="w"?"d1":"d8")):null;
+  game.move({from,to,promotion});
+  renderBoard();
+  requestAnimationFrame(()=>{
+    animatePiece(from,to);
+    if(rookFrom&&rookTo)animatePiece(rookFrom,rookTo);
+  });
 }
 function robotMove(){
   if(game.isGameOver())return;
@@ -65,7 +93,7 @@ function robotMove(){
   // Prefer captures and checks, otherwise choose a random legal move.
   const tactical=moves.filter(m=>m.captured||m.san.includes("+")||m.san.includes("#"));
   const pool=tactical.length&&Math.random()<.55?tactical:moves;
-  const move=pool[Math.floor(Math.random()*pool.length)];game.move(move);renderBoard();
+  const move=pool[Math.floor(Math.random()*pool.length)];moveAnimated(move.from,move.to,move.promotion);
   if(game.isGameOver())finishGame();
   else if(game.isCheck()){$("coach-message").textContent="Oh! Dein König steht im Schach. Zieh ihn in Sicherheit!";}
 }
