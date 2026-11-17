@@ -34,3 +34,120 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding:20px 0 27px;disp
   will-change:transform;
   contain:layout style;
 }
+
+
+/* Lumi-Design: warme Cremefarben, Rosé, Mint und weiche Karten */
+:root{
+  --ink:#2e2435;--muted:#81758a;--cream:#fbf8f4;--paper:#fffefd;
+  --green:#dceee7;--green-dark:#c8e1d7;--mint:#eaf4ef;
+  --pink:#dc668d;--line:#eee7e0;--shadow:0 22px 48px #35243a12;
+}
+body{background:var(--cream);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;font-weight:600}
+.app-shell{max-width:1500px;padding:0 48px}
+.topbar{height:88px;border-bottom:1px solid var(--line);gap:28px}
+.brand{font-family:Georgia,serif;font-size:23px;letter-spacing:0;color:var(--ink);font-weight:700;gap:11px;white-space:nowrap}
+.brand b{color:var(--ink)}
+.brand-mark{width:50px;height:50px;border-radius:50%;background:#e0f0e9;box-shadow:none;font-family:inherit;font-size:25px}
+.main-nav{display:flex;align-items:center;justify-content:flex-end;gap:8px;border:0;padding:0;margin:0 0 0 auto}
+.nav-item{padding:13px 21px;border-radius:28px;color:#756b7e;font-size:15px;font-weight:800}
+.nav-item.active{background:#dceee7;color:#756b7e}
+.nav-item:hover{background:#f0ebe6}
+.top-stats{gap:10px}
+.stat-chip{background:#fff0c4;border:0;padding:10px 17px;border-radius:30px;font-size:15px;color:var(--ink)}
+.star-mark{font-size:19px;color:#30263a}
+.sound-button{background:#f2eee9;color:#756b7e}
+.welcome-panel{margin:0 0 64px;background:transparent;border-radius:0;min-height:610px;grid-template-columns:1.08fr .92fr;align-items:center;overflow:visible}
+.welcome-copy{padding:60px 0 60px 0}
+.eyebrow{display:inline-block;background:#dceee7;color:#382e42;padding:8px 15px;border-radius:22px;font-size:12px;letter-spacing:1.6px}
+.welcome-copy h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(54px,5.3vw,78px);font-weight:500;line-height:.98;letter-spacing:-2.5px;margin:27px 0 28px;color:#2c2233}
+.welcome-copy h1 span{color:#dc668d}
+.welcome-text{max-width:550px;color:#7d7185;line-height:1.8;font-size:19px;font-weight:500;margin:0 0 34px}
+.welcome-actions{gap:16px}
+.primary-button,.soft-button{border-radius:32px;padding:17px 28px;font-size:16px;font-weight:800}
+.primary-button{background:#dc668d;color:white;box-shadow:0 3px 0 #c65379}
+.primary-button:hover{transform:translateY(-2px);box-shadow:0 5px 0 #c65379}
+.soft-button{background:#fffdfa;color:#33283b;border:2px solid #eee6dc;box-shadow:0 2px 4px #39283a0c}
+.mini-note{margin-top:25px;color:#82768a;font-size:14px}
+.hero-art{min-height:520px;display:grid;place-items:center;overflow:visible}
+.owl-card{position:relative;width:min(100%,625px);height:535px;background:#fffefd;border:1px solid #f0e9e2;border-radius:48px;box-shadow:0 25px 45px #3a2d3515;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.speech-bubble{position:absolute;top:34px;left:50%;transform:translateX(-50%);width:max-content;max-width:78%;padding:17px 22px;border:1.5px solid #eee4da;background:#fff;border-radius:28px;font-size:17px;line-height:1.45;color:#382e42;text-align:left}
+.speech-bubble:after{content:"";position:absolute;bottom:-10px;left:38px;width:18px;height:18px;background:#fff;border-right:1.5px solid #eee4da;border-bottom:1.5px solid #eee4da;transform:rotate(45deg)}
+.floating-chess{position:absolute;color:#dedbe0;font-family:Georgia,serif}
+.floating-chess.knight{left:18px;top:55px;font-size:38px}
+.floating-chess.queen{right:24px;top:100px;font-size:35px}
+.pixel-character{width:190px;height:225px;--skin:#c4947c;--hair:#8f604f;--shirt:#fff1df;image-rendering:auto}
+.pixel-character:before{content:"";position:absolute;left:36px;top:26px;width:118px;height:150px;border-radius:54% 54% 48% 48%;background:#bd8c75;box-shadow:-25px 43px 0 -4px #a87963,25px 43px 0 -4px #a87963,-9px -9px 0 -1px #8e604f,9px -9px 0 -1px #8e604f}
+.pixel-character:after{content:"";position:absolute;left:57px;top:100px;width:76px;height:98px;border-radius:50%;background:
+ radial-gradient(ellipse at 28% 35%,#fff 0 10px,transparent 11px),
+ radial-gradient(ellipse at 72% 35%,#fff 0 10px,transparent 11px),
+ radial-gradient(circle at 28% 35%,#4a3329 0 4px,transparent 5px),
+ radial-gradient(circle at 72% 35%,#4a3329 0 4px,transparent 5px),
+ radial-gradient(ellipse at 50% 60%,#f2a33e 0 7px,transparent 8px),
+ #fff2df;box-shadow:-25px -24px 0 -17px #e7a0a0,25px -24px 0 -17px #e7a0a0}
+.hero-character{position:absolute;left:50%;top:150px;bottom:auto;right:auto;transform:translateX(-50%) scale(1.18);transform-origin:top center}
+.owl-shadow{position:absolute;left:50%;top:426px;transform:translateX(-50%);width:135px;height:20px;border-radius:50%;background:#eee9e9}
+.hero-points{position:absolute;bottom:25px;display:flex;align-items:center;gap:12px;color:#7c7185;font-size:15px}
+.hero-points span{background:#fff;border-radius:22px;padding:10px 15px}
+.hero-points span:first-child{color:#30263a}
+.content-view{min-height:450px}
+.section-heading{margin:36px 0 28px}
+.section-heading h2{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:43px;letter-spacing:-1.5px;color:#2e2435}
+.section-heading p{font-size:18px;line-height:1.6;color:#81758a;font-weight:500;max-width:650px}
+.section-heading .eyebrow{font-family:Nunito,sans-serif;font-size:11px}
+.text-button{color:#dc668d}
+.board-card,.side-card,.lesson-list,.lesson-card,.shop-panel{background:#fffefd;border:1px solid #eee7e0;border-radius:25px;box-shadow:var(--shadow)}
+.chessboard{border-color:#b9cfc2;box-shadow:0 5px 0 #dbe8df}
+.square.light{background:#f8eee2}.square.dark{background:#c7d9ce}
+.lesson-item.selected{background:#e5f1eb}
+.lesson-item.selected .lesson-number{background:#dceee7;color:#51465b}
+.lesson-number{border-radius:50%}
+.lesson-card h3,.shop-heading h3{font-family:Georgia,'Times New Roman',serif;font-weight:500;color:#30263a}
+.wardrobe-layout{grid-template-columns:1fr;gap:30px}
+.character-stage{min-height:260px;border-radius:38px;background:#fffefd;border:1px solid #eee7e0;box-shadow:var(--shadow);display:flex;justify-content:flex-start;padding:26px;gap:30px}
+.stage-sun{position:relative;top:auto;left:auto;width:215px;height:215px;flex:0 0 215px;margin:0;border-radius:50%;background:linear-gradient(135deg,#e6f2e9,#fff4d9)}
+.wardrobe-character{position:absolute;left:82px;top:25px;transform:scale(.82);transform-origin:top left}
+.stage-name{position:absolute;left:270px;top:65px;bottom:auto;font-family:Georgia,serif;font-size:24px;letter-spacing:0;color:#30263a}
+.character-stage:after{content:"Lumi trägt noch nichts. Such ihr doch etwas Schönes aus!";position:absolute;left:270px;top:108px;color:#81758a;font-size:16px}
+.shop-panel{padding:28px 0 10px;border:0;box-shadow:none;background:transparent}
+.shop-heading{margin-bottom:22px}
+.shop-heading h3{font-size:30px}
+.shop-heading p{font-size:15px}
+.shop-balance{background:#fff0c4;color:#30263a;padding:12px 18px;border-radius:28px;font-size:17px}
+.shop-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.shop-item{background:#fff;border:1px solid #eee7e0;border-radius:28px;padding:20px 16px;box-shadow:0 12px 30px #382a3510;transition:transform .2s,box-shadow .2s}
+.shop-item:hover{transform:translateY(-4px);box-shadow:0 18px 35px #382a3518}
+.item-preview{height:118px;width:118px;max-width:100%;margin:0 auto 16px;border-radius:50%;background:#f7f3ed;color:#dc668d;font-size:45px}
+.shop-item b{font-size:15px;color:#30263a}
+.shop-item small{font-size:13px;color:#81758a;margin:7px 0 13px}
+.buy-button{background:#dceee7;color:#55495f;border-radius:22px;padding:11px 12px;font-size:13px}
+.buy-button:disabled{background:#f4f0e9;color:#8c8290}
+.equipped{background:#fff0c4;color:#6f5b31}
+footer{border-color:#eee7e0;color:#a49aa7}
+.toast{background:#382d40;border-radius:24px}
+@media(max-width:900px){
+ .app-shell{padding:0 24px}.topbar{gap:10px}.brand{font-size:19px}.brand-mark{width:42px;height:42px}
+ .nav-item{padding:11px 13px;font-size:13px}.welcome-panel{min-height:520px}.welcome-copy h1{font-size:56px}
+ .hero-art{min-height:440px}.owl-card{height:440px;border-radius:34px}.hero-character{top:125px;transform:translateX(-50%) scale(.9)}.owl-shadow{top:355px}
+ .shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:650px){
+ .app-shell{padding:0 16px}.topbar{height:auto;min-height:75px;flex-wrap:wrap;padding:12px 0;gap:10px}
+ .brand{font-size:20px}.top-stats{margin-left:auto}.sound-button{display:none}
+ .main-nav{order:3;width:100%;justify-content:space-between;gap:2px}
+ .nav-item{padding:10px 12px;font-size:12px}
+ .welcome-panel{grid-template-columns:1fr;margin-bottom:38px;min-height:0}
+ .welcome-copy{padding:48px 0 22px}.welcome-copy h1{font-size:54px;margin:22px 0}
+ .welcome-text{font-size:16px;line-height:1.7}
+ .hero-art{min-height:400px}.owl-card{height:390px;width:100%;border-radius:30px}
+ .speech-bubble{top:22px;font-size:14px;padding:12px 15px}.hero-character{top:112px;transform:translateX(-50%) scale(.78)}.owl-shadow{top:315px}
+ .hero-points{bottom:13px;font-size:12px}.hero-points span{padding:8px 10px}
+ .section-heading h2{font-size:34px}.section-heading p{font-size:15px}
+ .character-stage{min-height:230px;padding:16px}.stage-sun{width:160px;height:160px;flex-basis:160px}
+ .wardrobe-character{left:34px;top:4px;transform:scale(.68)}
+ .stage-name{left:190px;top:50px;font-size:20px}.character-stage:after{left:190px;top:88px;right:14px;font-size:13px}
+ .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.shop-item{padding:14px 10px;border-radius:22px}
+ .item-preview{height:90px;width:90px;font-size:36px}
+ .game-layout,.lesson-layout,.wardrobe-layout{grid-template-columns:1fr}
+ footer{font-size:8px;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){.shop-item{transition:none}}
