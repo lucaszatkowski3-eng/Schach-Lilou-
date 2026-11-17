@@ -53,7 +53,7 @@ function onSquare(sq){
   if(game.isGameOver()||game.turn()!=="w")return;
   const p=game.get(sq);
   if(selected&&legalTargets.includes(sq)){
-    try{moveAnimated(selected,sq,"q");selected=null;legalTargets=[];if(game.isGameOver()){finishGame();return;}setTimeout(robotMove,520);}catch(e){selected=null;legalTargets=[];renderBoard();}
+    try{const from=selected;selected=null;legalTargets=[];moveAnimated(from,sq,"q");if(game.isGameOver()){finishGame();return;}setTimeout(robotMove,520);}catch(e){selected=null;legalTargets=[];renderBoard();}
     return;
   }
   if(p&&p.color==="w"){selected=sq;legalTargets=game.moves({square:sq,verbose:true}).map(m=>m.to);$("coach-message").textContent=legalTargets.length?"Toll! Die leuchtenden Felder zeigen dir, wohin diese Figur ziehen darf.":"Diese Figur kann gerade nicht ziehen.";renderBoard();}
