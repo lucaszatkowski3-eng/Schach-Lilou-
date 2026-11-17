@@ -26,7 +26,7 @@ let equipped = localStorage.getItem("lilou-equipped") || "base";
 let selected = null, legalTargets = [], completedGames = Number(localStorage.getItem("lilou-games") || 0);
 let soundOn = true, lastRewarded = false;
 const save = () => { localStorage.setItem("lilou-stars",stars);localStorage.setItem("lilou-owned",JSON.stringify(owned));localStorage.setItem("lilou-equipped",equipped);localStorage.setItem("lilou-games",completedGames); };
-function updateStars(){ $("coin-count").textContent=stars;$("game-stars").textContent=stars;$("shop-coins").textContent=stars; }
+function updateStars(){ $("coin-count").textContent=stars;$("game-stars").textContent=stars;$("shop-coins").textContent=stars;const hero=$("hero-score");if(hero)hero.textContent=stars+" Punkte"; }
 function toast(message){const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove("show"),2300);}
 function showView(name){
   ["home","play","learn","wardrobe"].forEach(v=>{const el=$(v+"-view");if(el)el.classList.toggle("hidden",v!==name);});
