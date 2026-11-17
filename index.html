@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5efe3">
+  <meta name="description" content="Lilous Schachwelt – spielerisch Schach lernen, spielen und Pixel-Outfits sammeln.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>Lilous Schachwelt</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lilous Schachwelt Startseite">
+        <span class="brand-mark">L</span><span>LILOUS <b>SCHACHWELT</b></span>
+      </a>
+      <div class="top-stats">
+        <div class="stat-chip"><span class="coin-icon"></span><strong id="coin-count">0</strong><span>Sterne</span></div>
+        <button class="sound-button" id="sound-toggle" aria-label="Ton ein oder ausschalten">♫</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-panel" id="home-view">
+        <div class="welcome-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> DEIN KLEINES SCHACH-ABENTEUER</div>
+          <h1>Hallo, <span>Lilou!</span></h1>
+          <p class="welcome-text">Lerne Schach, spiele spannende Partien und sammle Sterne für deinen Charakter.</p>
+          <div class="welcome-actions">
+            <button class="primary-button" data-view="play">Schach spielen <span>→</span></button>
+            <button class="soft-button" data-view="learn">Schach lernen</button>
+          </div>
+          <div class="mini-note"><span class="sparkle">✦</span> Jeder Zug macht dich ein Stück besser.</div>
+        </div>
+        <div class="hero-art">
+          <div class="sun-disc"></div><div class="hero-cloud cloud-one"></div><div class="hero-cloud cloud-two"></div>
+          <div class="pixel-character hero-character" aria-label="Pixel-Figur"></div>
+          <div class="floating-tile tile-one">♘</div><div class="floating-tile tile-two">★</div>
+          <div class="hero-ground"></div>
+        </div>
+      </section>
+
+      <nav class="main-nav" aria-label="Hauptmenü">
+        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span> Start</button>
+        <button class="nav-item" data-view="play"><span class="nav-icon">▦</span> Spielen</button>
+        <button class="nav-item" data-view="learn"><span class="nav-icon">✎</span> Lernen</button>
+        <button class="nav-item" data-view="wardrobe"><span class="nav-icon">♙</span> Mein Charakter</button>
+      </nav>
+
+      <section class="content-view hidden" id="play-view">
+        <div class="section-heading"><div><div class="eyebrow">ZEIT FÜR EIN SPIEL</div><h2>Schach spielen</h2><p>Spiele gegen den Computer. Du bist Weiß und beginnst!</p></div><button class="text-button" data-view="home">← Zurück</button></div>
+        <div class="game-layout">
+          <div class="board-card">
+            <div class="board-topline"><span><i class="turn-dot"></i> <span id="turn-label">Du bist am Zug</span></span><span id="move-number">Zug 1</span></div>
+            <div id="chessboard" class="chessboard" role="grid" aria-label="Schachbrett"></div>
+            <div class="board-bottomline"><span id="game-message">Wähle eine deiner weißen Figuren.</span><button class="small-button" id="new-game">Neues Spiel</button></div>
+          </div>
+          <aside class="game-side">
+            <div class="side-card coach-card"><div class="side-card-title">LILOUS TIPP</div><div class="pixel-character mini-character"></div><p id="coach-message">Willkommen! Tippe auf eine Figur, um zu sehen, wohin sie ziehen kann.</p></div>
+            <div class="side-card"><div class="side-card-title">DEIN SPIEL</div><div class="game-facts"><div><span>Deine Farbe</span><b>Weiß</b></div><div><span>Gegner</span><b>Schach-Roboter</b></div><div><span>Deine Sterne</span><b id="game-stars">0</b></div></div></div>
+            <button class="soft-button full-button" id="undo-move">Letzten Zug zurücknehmen</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="content-view hidden" id="learn-view">
+        <div class="section-heading"><div><div class="eyebrow">SCHRITT FÜR SCHRITT</div><h2>Schach lernen</h2><p>Keine Sorge – wir üben alles ganz in Ruhe.</p></div><button class="text-button" data-view="home">← Zurück</button></div>
+        <div class="lesson-layout">
+          <div class="lesson-list" id="lesson-list">
+            <button class="lesson-item selected" data-lesson="0"><span class="lesson-number">1</span><span><b>Das Schachbrett</b><small>Felder und Farben</small></span><span>→</span></button>
+            <button class="lesson-item" data-lesson="1"><span class="lesson-number">2</span><span><b>Der Bauer</b><small>Kleine Schritte</small></span><span>→</span></button>
+            <button class="lesson-item" data-lesson="2"><span class="lesson-number">3</span><span><b>Der Turm</b><small>Geradeaus und quer</small></span><span>→</span></button>
+            <button class="lesson-item" data-lesson="3"><span class="lesson-number">4</span><span><b>Der Läufer</b><small>Diagonal unterwegs</small></span><span>→</span></button>
+            <button class="lesson-item" data-lesson="4"><span class="lesson-number">5</span><span><b>Das Pferd</b><small>Der besondere Sprung</small></span><span>→</span></button>
+            <button class="lesson-item" data-lesson="5"><span class="lesson-number">6</span><span><b>Die Dame</b><small>Die stärkste Figur</small></span><span>→</span></button>
+            <button class="lesson-item" data-lesson="6"><span class="lesson-number">7</span><span><b>Der König</b><small>Die wichtigste Figur</small></span><span>→</span></button>
+          </div>
+          <article class="lesson-card"><div class="lesson-badge">DEINE LERNSTUNDE</div><div class="lesson-piece" id="lesson-piece">▦</div><h3 id="lesson-title">Das Schachbrett</h3><p id="lesson-text">Das Schachbrett hat 64 Felder. Es gibt helle und dunkle Felder. Jede Seite hat 8 Reihen und 8 Spalten.</p><div class="lesson-example" id="lesson-example">Merke dir: Unten rechts ist immer ein helles Feld.</div><button class="primary-button" id="lesson-next">Nächste Lektion <span>→</span></button></article>
+        </div>
+      </section>
+
+      <section class="content-view hidden" id="wardrobe-view">
+        <div class="section-heading"><div><div class="eyebrow">DEIN PIXEL-FREUND</div><h2>Mein Charakter</h2><p>Spiele Schach und sammle Sterne für neue Sachen.</p></div><button class="text-button" data-view="home">← Zurück</button></div>
+        <div class="wardrobe-layout">
+          <div class="character-stage"><div class="stage-sun"></div><div class="pixel-character wardrobe-character" id="wardrobe-character"></div><div class="stage-name">DEIN ABENTEUER-FREUND</div></div>
+          <div class="shop-panel"><div class="shop-heading"><div><h3>Kleiner Sterneladen</h3><p>Such dir etwas Schönes aus!</p></div><div class="shop-balance"><span class="coin-icon"></span><b id="shop-coins">0</b></div></div><div class="shop-grid" id="shop-grid"></div></div>
+        </div>
+      </section>
+    </main>
+    <footer><span>LILOUS SCHACHWELT</span><span>Spielen. Lernen. Sterne sammeln.</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
