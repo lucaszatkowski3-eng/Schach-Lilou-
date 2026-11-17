@@ -59,32 +59,52 @@ function onSquare(sq){
   if(p&&p.color==="w"){selected=sq;legalTargets=game.moves({square:sq,verbose:true}).map(m=>m.to);$("coach-message").textContent=legalTargets.length?"Toll! Die leuchtenden Felder zeigen dir, wohin diese Figur ziehen darf.":"Diese Figur kann gerade nicht ziehen.";renderBoard();}
   else{selected=null;legalTargets=[];renderBoard();}
 }
-function animatePiece(from,to){
+function pieceSnapshot(square){
+  const node=document.querySelector(`.square[aria-label="${square}"] .piece`);
+  if(!node)return null;
+  return {node:node.cloneNode(true),rect:node.getBoundingClientRect(),square};
+}
+function animateSnapshot(snapshot,to){
+  if(!snapshot)return;
   const destination=document.querySelector(`.square[aria-label="${to}"] .piece`);
-  if(!destination)return;
-  const fromEl=document.querySelector(`.square[aria-label="${from}"]`);
-  const toEl=document.querySelector(`.square[aria-label="${to}"]`);
-  if(!fromEl||!toEl)return;
-  const a=fromEl.getBoundingClientRect(),b=toEl.getBoundingClientRect();
-  const dx=a.left-b.left,dy=a.top-b.top;
-  if(Math.abs(dx)+Math.abs(dy)<1)return;
+  const targetSquare=document.querySelector(`.square[aria-label="${to}"]`);
+  if(!destination||!targetSquare)return;
+  const end=targetSquare.getBoundingClientRect();
   const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(reduce)return;
-  destination.animate([
-    {transform:`translate(${dx}px,${dy}px) scale(1.08)`,filter:"drop-shadow(0 5px 4px #243b2a55)"},
-    {transform:"translate(0,0) scale(1)",filter:"drop-shadow(1px 2px 0 #4b514533)"}
-  ],{duration:430,easing:"cubic-bezier(.2,.8,.2,1)",fill:"both"});
+  const ghost=snapshot.node;
+  ghost.classList.add("moving-piece-ghost");
+  Object.assign(ghost.style,{
+    position:"fixed",left:snapshot.rect.left+"px",top:snapshot.rect.top+"px",
+    width:snapshot.rect.width+"px",height:snapshot.rect.height+"px",
+    display:"grid",placeItems:"center",margin:"0",zIndex:"9999",
+    pointerEvents:"none",transform:"translate3d(0,0,0) scale(1.08)"
+  });
+  document.body.appendChild(ghost);
+  destination.style.visibility="hidden";
+  const dx=end.left-snapshot.rect.left,dy=end.top-snapshot.rect.top;
+  const animation=ghost.animate([
+    {transform:"translate3d(0,0,0) scale(1.08)"},
+    {transform:`translate3d(${dx}px,${dy}px,0) scale(1)`}
+  ],{duration:520,easing:"cubic-bezier(.22,.75,.25,1)",fill:"forwards"});
+  animation.onfinish=()=>{
+    ghost.remove();
+    const current=document.querySelector(`.square[aria-label="${to}"] .piece`);
+    if(current)current.style.visibility="";
+  };
 }
 function moveAnimated(from,to,promotion="q"){
   const moving=game.get(from);
   const isCastle=moving?.type==="k"&&Math.abs(from.charCodeAt(0)-to.charCodeAt(0))===2;
+  const kingSnapshot=pieceSnapshot(from);
   const rookFrom=isCastle?(to.charCodeAt(0)>from.charCodeAt(0)?(game.turn()==="w"?"h1":"h8"):(game.turn()==="w"?"a1":"a8")):null;
   const rookTo=isCastle?(to.charCodeAt(0)>from.charCodeAt(0)?(game.turn()==="w"?"f1":"f8"):(game.turn()==="w"?"d1":"d8")):null;
+  const rookSnapshot=rookFrom?pieceSnapshot(rookFrom):null;
   game.move({from,to,promotion});
   renderBoard();
   requestAnimationFrame(()=>{
-    animatePiece(from,to);
-    if(rookFrom&&rookTo)animatePiece(rookFrom,rookTo);
+    animateSnapshot(kingSnapshot,to);
+    if(rookSnapshot&&rookTo)animateSnapshot(rookSnapshot,rookTo);
   });
 }
 function robotMove(){
