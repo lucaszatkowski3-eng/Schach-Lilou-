@@ -1,0 +1,13 @@
+{
+  "name": "Lilous Schachwelt",
+  "short_name": "Lilous Schach",
+  "description": "Schach spielen, lernen und Sterne sammeln.",
+  "lang": "de",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f2e8",
+  "theme_color": "#f5efe3",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
