@@ -23,3 +23,14 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding:20px 0 27px;disp
 .piece{will-change:transform;transform-origin:center;backface-visibility:hidden}
 .square{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.piece{will-change:auto}}
+
+
+/* Eigenständige Figur-Kopie: bleibt während des gesamten Zuges sichtbar. */
+.moving-piece-ghost{
+  font-family:Georgia,serif;
+  line-height:1;
+  transform-origin:center center;
+  filter:drop-shadow(0 8px 5px #1e302855);
+  will-change:transform;
+  contain:layout style;
+}
