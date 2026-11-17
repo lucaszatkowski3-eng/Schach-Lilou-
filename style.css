@@ -17,3 +17,9 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding:20px 0 27px;disp
 .wardrobe-character.outfit-cape:after{background:#647eaa;box-shadow:0 44px 0 -13px #4c5b78,-27px 4px 0 -15px var(--skin),27px 4px 0 -15px var(--skin),-10px 44px 0 -12px #4c5b78,10px 44px 0 -12px #4c5b78}
 .wardrobe-character.outfit-glasses:before{box-shadow:0 0 0 5px var(--hair),-8px 9px 0 -1px var(--hair),8px 7px 0 -1px var(--hair),0 19px 0 -3px var(--skin),-13px 1px 0 -4px var(--hair),13px 1px 0 -4px var(--hair),-8px 9px 0 -13px #4c5b78,8px 9px 0 -13px #4c5b78}
 .wardrobe-character.outfit-flower:before{box-shadow:0 0 0 5px var(--hair),-8px 9px 0 -1px var(--hair),8px 7px 0 -1px var(--hair),0 19px 0 -3px var(--skin),-13px 1px 0 -4px var(--hair),13px 1px 0 -4px var(--hair),15px -9px 0 -4px #e58a9b,15px -9px 0 -8px #f6d06c}
+
+
+/* Figuren bewegen sich sichtbar von ihrem Start- zum Zielfeld. */
+.piece{will-change:transform;transform-origin:center;backface-visibility:hidden}
+.square{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.piece{will-change:auto}}
